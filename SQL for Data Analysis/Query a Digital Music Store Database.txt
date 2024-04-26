@@ -1,0 +1,38 @@
+Query-1:
+SELECT MT.Name, count(*) AlbumCount
+FROM Artist MT
+JOIN Album T
+ON T.ArtistId = MT.ArtistId
+GROUP BY MT.Name
+HAVING COUNT(*) >= 10 
+ORDER BY AlbumCount DESC
+
+Query-2:
+SELECT MT.Name, count(*) GenreId
+FROM Genre MT
+JOIN Track T
+ON T.GenreId = MT.GenreId
+GROUP BY MT.Name
+HAVING COUNT(*) >= 50
+ORDER BY GenreId DESC
+
+Query-3:
+SELECT MT.Name, count(*) PlaylistId
+FROM Playlist MT
+JOIN PlaylistTrack T
+ON T.PlaylistId = MT.PlaylistId
+GROUP BY MT.Name
+ORDER BY PlaylistId DESC
+LIMIT 5;
+
+Query-4:
+SELECT MT.Name, count(DISTINCT Composer) as Composers
+FROM Genre MT
+JOIN Track T
+ON T.GenreId = MT.GenreId
+GROUP BY MT.Name
+ORDER BY Composers DESC
+Limit 3;
+
+
+
